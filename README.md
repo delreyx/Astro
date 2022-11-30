@@ -1,2 +1,2 @@
 # Astro
- 2D Platfromer 
+ 2D Platformer
