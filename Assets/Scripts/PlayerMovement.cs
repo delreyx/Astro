@@ -14,10 +14,16 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask groundLayer;
     private bool isTouchingGround;
 
+    private Vector3 respawnPoint;
+    public GameObject killBox;
+    private bool doubleJump;
+
+
     // Start is called before the first frame update
     void Start()
     {
         player = GetComponent<Rigidbody2D>();
+        respawnPoint = transform.position;
     }
 
     // Update is called once per frame
@@ -43,6 +49,19 @@ public class PlayerMovement : MonoBehaviour
         {
             player.velocity = new Vector2(player.velocity.x, jumpSpeed);
         }
+
+        killBox.transform.position = new Vector2(transform.position.x, killBox.transform.position.y);
+
+    }
+    
+     private void OnTriggerEnter2D(Collider2D collision)
+    {
+
+        if(collision.tag == "KillBox")
+        {
+            transform.position = respawnPoint;
+        }
+    
     }
 }
 
