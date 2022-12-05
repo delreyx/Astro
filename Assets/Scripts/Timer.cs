@@ -18,10 +18,11 @@ public class Timer : MonoBehaviour
         if (duration <=0)
         {
             duration = 0;
-           
+        
             enabled = false;
 
         }
+
 
         
 

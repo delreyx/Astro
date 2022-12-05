@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class Score : MonoBehaviour
 {
     public TextMeshProUGUI ScoreText;
     private float score;
-   
-
-    
 
     // Update is called once per frame
     void Update()
@@ -19,7 +17,6 @@ public class Score : MonoBehaviour
         {
             score += 1 * Time.deltaTime;
             ScoreText.text = ((int)score).ToString();
-
         }
     }
 }
