@@ -15,7 +15,7 @@ public class Score : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameObject.FindGameObjectWithTag("player") != null)
+        if (GameObject.FindGameObjectWithTag("Player") != null)
         {
             score += 1 * Time.deltaTime;
             ScoreText.text = ((int)score).ToString();
