@@ -8,14 +8,18 @@ public class Score : MonoBehaviour
 {
     public TextMeshProUGUI ScoreText;
     private float score;
+   
+
+    
 
     // Update is called once per frame
     void Update()
     {
-        if (GameObject.FindGameObjectWithTag("Player") != null)
+        if (GameObject.FindGameObjectWithTag("player") != null)
         {
             score += 1 * Time.deltaTime;
             ScoreText.text = ((int)score).ToString();
+
         }
     }
 }
