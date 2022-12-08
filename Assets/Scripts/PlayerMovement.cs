@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    
     public float speed = 5f;
     public float jumpSpeed = 8f;
     private float direction = 0f;
@@ -14,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask groundLayer;
     private bool isTouchingGround;
 
-    private Vector3 respawnPoint;
+    public Vector3 respawnPoint;
     public GameObject killBox;
     private bool doubleJump;
 
@@ -61,7 +62,13 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.position = respawnPoint;
         }
+        if(collision.tag == "Asteroid")
+        {
+            transform.position = respawnPoint;
+        }
     
     }
+
+   
 }
 

@@ -1,37 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
 
 public class LivesCounter : MonoBehaviour
+{
+    public GameObject[] hearts;
+    public int life ;
 
-int Lives;
-
-    void Start()
+    // Update is called once per frame
+    void Update()
     {
-        UpdateUI();
+        
+        
     }
-
-    void UpdateUI()
+    public void TakeDamage(int d)
     {
-        GameObject.Find("LivesCounter").GetComponent<Text>().text = "Lives : " + Lives;
+        life -= d;
     }
-
-    void OnCollisionEnter2D(Collision2D coll)
-
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        string tag = coll.collider.gameObject.tag;
 
-
-        if (tag == "avoid_me")
+        if(collision.tag == "Asteroid" && life <1)
         {
-         
-            Lives = PlayerPrefs.GetInt("Lives");
-            Lives--;
-            PlayerPrefs.SetInt("Lives", Lives);
+            Destroy(hearts[0].gameObject);
+            
+        }else if (collision.tag == "Asteroid" && life <2)
+        {
+            Destroy(hearts[1].gameObject);
 
-             if (Lives > 0)
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }else if (collision.tag == "Asteroid" && life <3)
+        {
+            Destroy(hearts[2].gameObject);
         }
+    
     }
 
+   
+}

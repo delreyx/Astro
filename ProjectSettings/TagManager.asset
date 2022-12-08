@@ -5,8 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - KillBox
-  - avoid_me
-  - Ground
+  - Asteroid
   layers:
   - Default
   - TransparentFX
