@@ -8,29 +8,29 @@ public class LivesCounter : MonoBehaviour
     public int life ;
 
     // Update is called once per frame
-    void Update()
+    void Start()
     {
-        
-        
+        life = hearts.Length;
     }
+
     public void TakeDamage(int d)
     {
         life -= d;
+        for (int i = 0; i < hearts.Length; i++)
+        {
+            hearts[i].gameObject.SetActive(i < life);
+        }
     }
+
+    public void AddLives(int d)
+        => TakeDamage(-d);
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if(collision.tag == "Asteroid" && life <1)
+        if (collision.tag == "Asteroid")
         {
-            Destroy(hearts[0].gameObject);
-            
-        }else if (collision.tag == "Asteroid" && life <2)
-        {
-            Destroy(hearts[1].gameObject);
-
-        }else if (collision.tag == "Asteroid" && life <3)
-        {
-            Destroy(hearts[2].gameObject);
+            TakeDamage(1);
         }
     
     }
