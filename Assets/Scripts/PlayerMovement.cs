@@ -19,6 +19,13 @@ public class PlayerMovement : MonoBehaviour
     public GameObject killBox;
     private bool doubleJump;
 
+    [Header("Audio")]
+    public AudioClip collisionClip;
+    public AudioClip jumpClip;
+
+    private AudioSource audioSource;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -49,10 +56,16 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump") && isTouchingGround)
         {
             player.velocity = new Vector2(player.velocity.x, jumpSpeed);
+             
         }
 
         killBox.transform.position = new Vector2(transform.position.x, killBox.transform.position.y);
 
+    }
+
+    void onJump() {
+        
+        audioSource.PlayOneShot(jumpClip);
     }
     
     private void OnTriggerEnter2D(Collider2D collision)
@@ -61,6 +74,7 @@ public class PlayerMovement : MonoBehaviour
         if(collision.tag == "KillBox")
         {
             transform.position = respawnPoint;
+            
         }
         if(collision.tag == "Asteroid")
         {
