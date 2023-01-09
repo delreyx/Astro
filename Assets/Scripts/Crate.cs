@@ -25,6 +25,8 @@ public class Crate : MonoBehaviour
                 velocity.y = pushForce;
                 collision.attachedRigidbody.velocity = velocity;
             }
+
+            Break();
         }
     }
 

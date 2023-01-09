@@ -15,7 +15,7 @@ public class LivesCounter : MonoBehaviour
 
     public void TakeDamage(int d)
     {
-        life -= d;
+        life = Mathf.Clamp(life - d, 0, 4);
         for (int i = 0; i < hearts.Length; i++)
         {
             hearts[i].gameObject.SetActive(i < life);
@@ -31,6 +31,10 @@ public class LivesCounter : MonoBehaviour
         if (collision.tag == "Asteroid")
         {
             TakeDamage(1);
+        }
+        if (collision.tag == "Life")
+        {
+            AddLives(1);
         }
     
     }

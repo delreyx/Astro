@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
-private const float PLAYER_DISTANCE_SPAWN_LEVEL_PART = 200f;
+private const float PLAYER_DISTANCE_SPAWN_LEVEL_PART = 1f;
 
-    [SerializeField] public Transform levelPart_Start;
-    [SerializeField] public List<Transform> levelPartList;
+    [SerializeField] public TileMetrics levelPart_Start;
+    [SerializeField] public List<TileMetrics> levelPartList;
+    private Queue<TileMetrics> generatedLevels;
     [SerializeField] public GameObject player;
 
     private Vector3 lastEndPosition;
 
     private void Awake() {
-        lastEndPosition = levelPart_Start.Find("EndPosition").position;
+        lastEndPosition = levelPart_Start.endPosition;
 
         int startingSpawnLevelParts = 5;
         for (int i = 0; i < startingSpawnLevelParts; i++) {
@@ -29,13 +30,14 @@ private const float PLAYER_DISTANCE_SPAWN_LEVEL_PART = 200f;
     }
 
     private void SpawnLevelPart() {
-        Transform chosenLevelPart = levelPartList[Random.Range(0, levelPartList.Count)];
-        Transform lastLevelPartTransform = SpawnLevelPart(chosenLevelPart, lastEndPosition);
-        lastEndPosition = lastLevelPartTransform.Find("EndPosition").position;
+        TileMetrics chosenLevelPart = levelPartList[Random.Range(0, levelPartList.Count)];
+        TileMetrics lastLevelPartTransform = SpawnLevelPart(chosenLevelPart, lastEndPosition);
+        lastEndPosition = lastLevelPartTransform.endPosition;
+        Debug.Log(lastEndPosition);
     }
 
-    private Transform SpawnLevelPart(Transform levelPart, Vector3 spawnPosition) {
-        Transform levelPartTransform = Instantiate(levelPart, spawnPosition, Quaternion.identity);
+    private TileMetrics SpawnLevelPart(TileMetrics levelPart, Vector3 spawnPosition) {
+        TileMetrics levelPartTransform = Instantiate(levelPart, spawnPosition, Quaternion.identity);
         return levelPartTransform;
     }
 

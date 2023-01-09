@@ -6,6 +6,8 @@ TagManager:
   tags:
   - KillBox
   - Asteroid
+  - Crate
+  - Apple
   layers:
   - Default
   - TransparentFX
@@ -14,7 +16,7 @@ TagManager:
   - Water
   - UI
   - Ground
-  - 
+  - Background
   - 
   - 
   - 
@@ -40,6 +42,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 2851574961
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

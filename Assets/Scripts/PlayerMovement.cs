@@ -31,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         player = GetComponent<Rigidbody2D>();
+        audioSource = GetComponent<AudioSource>();
         respawnPoint = transform.position;
     }
 
@@ -56,6 +57,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump") && isTouchingGround)
         {
             player.velocity = new Vector2(player.velocity.x, jumpSpeed);
+             audioSource.PlayOneShot(jumpClip);
              
         }
 
@@ -64,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void onJump() {
-        
+
         audioSource.PlayOneShot(jumpClip);
     }
     
@@ -78,7 +80,8 @@ public class PlayerMovement : MonoBehaviour
         }
         if(collision.tag == "Asteroid")
         {
-            transform.position = respawnPoint;
+            transform.position = respawnPoint; 
+            audioSource.PlayOneShot(collisionClip);
         }
     
     }
