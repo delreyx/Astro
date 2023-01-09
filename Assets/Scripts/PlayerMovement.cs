@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 5f;
     public float jumpSpeed = 8f;
     private float direction = 0f;
+    private TrailRenderer _trailRenderer;
     private Rigidbody2D player;
 
     public Transform groundCheck;
@@ -23,16 +24,21 @@ public class PlayerMovement : MonoBehaviour
     public AudioClip collisionClip;
     public AudioClip jumpClip;
 
+    [Header("Dashing")]
+    [SerializeField] private float _dashingVelocity = 14f;
+    [SerializeField] private float _dashingTime = 0.5f;
+    private Vector2 _dashingDir;
+    private bool _isDashing;
+    private bool _canDash = true;
     private AudioSource audioSource;
-
 
 
     // Start is called before the first frame update
     void Start()
     {
         player = GetComponent<Rigidbody2D>();
-        audioSource = GetComponent<AudioSource>();
         respawnPoint = transform.position;
+        _trailRenderer = GetComponentInChildren<TrailRenderer>();
     }
 
     // Update is called once per frame
@@ -57,16 +63,44 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump") && isTouchingGround)
         {
             player.velocity = new Vector2(player.velocity.x, jumpSpeed);
-             audioSource.PlayOneShot(jumpClip);
-             
+        
         }
 
         killBox.transform.position = new Vector2(transform.position.x, killBox.transform.position.y);
 
+        var dashInput = Input.GetButtonDown("Fire3");
+        if (direction != 0 && dashInput && _canDash)
+        {
+            _isDashing = true;
+            _canDash = false;
+            _trailRenderer.emitting = true;
+            _dashingDir = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+            
+            if (_dashingDir == Vector2.zero)
+            {
+                _dashingDir = new Vector2(transform.localScale.x, 0);
+            }
+
+            StartCoroutine(StopDashing());
+
+        }
+
+        // _animator.SetBool("IsDashing", _isDashing);
+        if (_isDashing)
+        {
+            player.velocity = _dashingDir.normalized *_dashingVelocity;
+            return;
+        }
+
+        if (isTouchingGround)
+        {
+            _canDash = true;
+        }
+
     }
 
     void onJump() {
-
+        
         audioSource.PlayOneShot(jumpClip);
     }
     
@@ -80,12 +114,15 @@ public class PlayerMovement : MonoBehaviour
         }
         if(collision.tag == "Asteroid")
         {
-            transform.position = respawnPoint; 
-            audioSource.PlayOneShot(collisionClip);
+            transform.position = respawnPoint;
         }
-    
     }
 
-   
-}
+    private IEnumerator StopDashing()
+    {
+        yield return new WaitForSeconds(_dashingTime);
+        _trailRenderer.emitting = false;
+        _isDashing = false;
+    }
 
+}
