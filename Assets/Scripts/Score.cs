@@ -9,6 +9,8 @@ public class Score : MonoBehaviour
 {
     public TextMeshProUGUI ScoreText;
     private float score;
+    [SerializeField] public GameObject player;
+
 
     // Update is called once per frame
     void Update()
@@ -19,4 +21,6 @@ public class Score : MonoBehaviour
             ScoreText.text = ((int)score).ToString();
         }
     }
+
+   
 }

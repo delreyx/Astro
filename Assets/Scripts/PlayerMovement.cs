@@ -112,10 +112,7 @@ public class PlayerMovement : MonoBehaviour
             transform.position = respawnPoint;
             
         }
-        if(collision.tag == "Asteroid")
-        {
-            transform.position = respawnPoint;
-        }
+        
     }
 
     private IEnumerator StopDashing()

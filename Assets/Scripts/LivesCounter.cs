@@ -7,6 +7,10 @@ public class LivesCounter : MonoBehaviour
     public GameObject[] hearts;
     public int life ;
 
+    public GameManagerScript gameManager;
+
+    private bool isDead;
+
     // Update is called once per frame
     void Start()
     {
@@ -35,9 +39,20 @@ public class LivesCounter : MonoBehaviour
         if (collision.tag == "Life")
         {
             AddLives(1);
+            Destroy(collision.gameObject);
         }
     
     }
+void Update() {
+
+
+    if (life <=0 && !isDead)
+    {
+        isDead = true;
+        gameManager.gameOver();
+    }
+
+}
 
    
 }

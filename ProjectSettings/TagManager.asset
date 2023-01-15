@@ -8,6 +8,8 @@ TagManager:
   - Asteroid
   - Crate
   - Apple
+  - Tile
+  - Life
   layers:
   - Default
   - TransparentFX
