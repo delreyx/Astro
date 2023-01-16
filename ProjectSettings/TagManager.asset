@@ -10,6 +10,7 @@ TagManager:
   - Apple
   - Tile
   - Life
+  - Platform
   layers:
   - Default
   - TransparentFX

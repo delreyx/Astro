@@ -11,16 +11,26 @@ public class Score : MonoBehaviour
     private float score;
     [SerializeField] public GameObject player;
 
+    float lastYposition= -100;
+    float currentYposition;
 
-    // Update is called once per frame
-    void Update()
+    void Update(){
+        currentYposition = player.transform.position.y;
+    }
+    
+    void OnCollisionEnter2D(Collision2D col)
     {
-        if (GameObject.FindGameObjectWithTag("Player") != null)
+
+        if (col.gameObject.tag == "Platform")
         {
-            score += 1 * Time.deltaTime;
-            ScoreText.text = ((int)score).ToString();
+            if(currentYposition > lastYposition)
+            {
+                lastYposition = currentYposition;
+                score++;
+            }
+            // is my position on Y > lastYposition?
+            // if yes, lastYposition = current Y position
+            // add a point
         }
     }
-
-   
 }
