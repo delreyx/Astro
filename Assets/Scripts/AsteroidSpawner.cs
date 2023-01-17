@@ -25,7 +25,7 @@ public class AsteroidSpawner : MonoBehaviour
             Vector3 pos = spawnPoint[index].position;
 
             Instantiate(Asteroid, pos, Quaternion.identity);
-            yield return new WaitForSeconds (1f);
+            yield return new WaitForSeconds (3f);
 
         }
 
