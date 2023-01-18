@@ -32,6 +32,8 @@ public class PlayerMovement : MonoBehaviour
     private bool _canDash = true;
     private AudioSource audioSource;
 
+    private Animator playerAnimation;
+
     
 
 
@@ -41,6 +43,7 @@ public class PlayerMovement : MonoBehaviour
         player = GetComponent<Rigidbody2D>();
         respawnPoint = transform.position;
         _trailRenderer = GetComponentInChildren<TrailRenderer>();
+        playerAnimation = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -52,10 +55,12 @@ public class PlayerMovement : MonoBehaviour
         if (direction > 0f)
         {
             player.velocity = new Vector2(direction * speed, player.velocity.y);
+            transform.localScale = new Vector2(0.315f, 0.2633438f);
         }
         else if (direction < 0f)
         {
             player.velocity = new Vector2(direction * speed, player.velocity.y);
+            transform.localScale = new Vector2(-0.315f, 0.2633438f);
         }
         else
         {
@@ -98,6 +103,9 @@ public class PlayerMovement : MonoBehaviour
         {
             _canDash = true;
         }
+
+        playerAnimation.SetFloat("Speed", Mathf.Abs(player.velocity.x));
+        playerAnimation.SetBool("OnGround", isTouchingGround);
 
     }
 
