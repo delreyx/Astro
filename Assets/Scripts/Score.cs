@@ -28,4 +28,14 @@ public class Score : MonoBehaviour
         score++;
         scoreText.text = "Score: " + score.ToString();
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+
+        if(collision.tag == "KillBox")
+        {
+            score--;
+            scoreText.text = "Score: " + score.ToString();            
+        }
+    }
 }

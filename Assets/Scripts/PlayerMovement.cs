@@ -30,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 _dashingDir;
     private bool _isDashing;
     private bool _canDash = true;
+
     private AudioSource audioSource;
 
     private Animator playerAnimation;
@@ -70,6 +71,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump") && isTouchingGround)
         {
             player.velocity = new Vector2(player.velocity.x, jumpSpeed);
+          
         
         }
 
@@ -121,6 +123,10 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.position = respawnPoint;
             
+        }
+        if (collision.tag == "Asteroid")
+        {
+            audioSource.PlayOneShot(collisionClip);
         }
         
     }
