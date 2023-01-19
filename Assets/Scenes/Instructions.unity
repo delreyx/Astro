@@ -765,8 +765,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Control the astronaut by using WASD\n<br>\nUse SHIFT to dash into a direction\n<br>\nUse
-    SPACE bar to jump \n\n"
+  m_text: "Control the astronaut to move left and right by using A and D.\n<br>\nUse
+    SPACE to dash into a direction.\n<br>\nUse W bar to jump. \n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 044ce8101295d42f0945645108a36349, type: 2}
   m_sharedMaterial: {fileID: -6688459350834658648, guid: 044ce8101295d42f0945645108a36349, type: 2}

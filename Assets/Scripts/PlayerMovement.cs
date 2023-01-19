@@ -45,6 +45,7 @@ public class PlayerMovement : MonoBehaviour
         respawnPoint = transform.position;
         _trailRenderer = GetComponentInChildren<TrailRenderer>();
         playerAnimation = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -71,8 +72,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump") && isTouchingGround)
         {
             player.velocity = new Vector2(player.velocity.x, jumpSpeed);
-          
-        
+            onJump();
         }
 
         killBox.transform.position = new Vector2(transform.position.x, killBox.transform.position.y);
