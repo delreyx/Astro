@@ -6,12 +6,20 @@ public class Crate : MonoBehaviour
 {
         // The force at which this crate will push the collided object.
     public float pushForce = 4f;
+
+    public AudioClip breakClip;
+    private AudioSource audioSource;
+    
     /// <summary>
     /// Triggers when this collider overlaps with another.
     /// </summary>
     /// <param name="collision">The other collider.</param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        void Start() 
+        {
+            audioSource = GetComponent<AudioSource>();
+        }
         // attachedRigidbody returns the Rigidbody component the collider belongs to.
         if (collision.attachedRigidbody != null)
         {
@@ -36,9 +44,11 @@ public class Crate : MonoBehaviour
         // TODO: Unparent all children.
         while (transform.childCount > 0)
         {
+            audioSource.PlayOneShot(breakClip);
             Transform t = transform.GetChild(0);
             t.SetParent(null);
             t.gameObject.SetActive(true);
+            
         }
        
 
