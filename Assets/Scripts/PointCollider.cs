@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PointCollider : MonoBehaviour
 {
-    private static float lastYPos = 0;
+     private static float lastYPos = 0;
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.tag == "Player")
         {
