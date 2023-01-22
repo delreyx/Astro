@@ -351,8 +351,8 @@ TrailRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -10
-  m_Time: 0.1
+  m_SortingOrder: 0
+  m_Time: 0.09
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -382,10 +382,10 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 0.9453508, b: 0.34901962, a: 1}
-      key1: {r: 1, g: 0.9453508, b: 0.34901962, a: 0.8627451}
-      key2: {r: 0, g: 0, b: 0, a: 0.6039216}
-      key3: {r: 0, g: 0, b: 0, a: 0}
+      key0: {r: 0.745283, g: 0.2750337, b: 0.12421376, a: 0.58431375}
+      key1: {r: 0.745283, g: 0.2750337, b: 0.12421376, a: 0.46666667}
+      key2: {r: 0, g: 0, b: 0, a: 0.07058824}
+      key3: {r: 0, g: 0, b: 0, a: 0.44705883}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
       key6: {r: 0, g: 0, b: 0, a: 0}
@@ -399,9 +399,9 @@ TrailRenderer:
       ctime6: 0
       ctime7: 0
       atime0: 3277
-      atime1: 44911
-      atime2: 60716
-      atime3: 0
+      atime1: 30069
+      atime2: 56476
+      atime3: 65535
       atime4: 0
       atime5: 0
       atime6: 0
@@ -409,13 +409,13 @@ TrailRenderer:
       m_Mode: 0
       m_NumColorKeys: 2
       m_NumAlphaKeys: 3
-    numCornerVertices: 1
-    numCapVertices: 5
+    numCornerVertices: 0
+    numCapVertices: 0
     alignment: 0
     textureMode: 0
-    shadowBias: 0.1
+    shadowBias: 1.66
     generateLightingData: 0
-  m_MinVertexDistance: 0.01
+  m_MinVertexDistance: 0.14
   m_Autodestruct: 0
   m_Emitting: 1
 --- !u!1 &203613500
@@ -1476,7 +1476,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -61.299988, y: -5.700012}
+  m_AnchoredPosition: {x: -61.30005, y: -5.699951}
   m_SizeDelta: {x: 156.31, y: 48.0813}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &830203485
@@ -3088,7 +3088,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50.7, y: -23}
+  m_AnchoredPosition: {x: 50.69995, y: -23}
   m_SizeDelta: {x: 320, y: 100}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1899301925
