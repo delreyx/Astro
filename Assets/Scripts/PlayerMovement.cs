@@ -23,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Audio")]
     public AudioClip collisionClip;
     public AudioClip jumpClip;
+    public AudioClip breakClip;
 
     [Header("Dashing")]
     [SerializeField] private float _dashingVelocity = 14f;
@@ -127,6 +128,9 @@ public class PlayerMovement : MonoBehaviour
         if (collision.tag == "Asteroid")
         {
             audioSource.PlayOneShot(collisionClip);
+        }
+        if (collision.tag == "Crate") {
+            audioSource.PlayOneShot(breakClip);
         }
         
     }
