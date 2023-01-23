@@ -11,6 +11,7 @@ TagManager:
   - Tile
   - Life
   - Platform
+  - CheckPoint
   layers:
   - Default
   - TransparentFX

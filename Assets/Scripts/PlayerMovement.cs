@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     public AudioClip collisionClip;
     public AudioClip jumpClip;
     public AudioClip breakClip;
+    public AudioClip lifeClip;
 
     [Header("Dashing")]
     [SerializeField] private float _dashingVelocity = 14f;
@@ -125,6 +126,11 @@ public class PlayerMovement : MonoBehaviour
             transform.position = respawnPoint;
             
         }
+        else if (collision.tag == "CheckPoint")
+        {
+            respawnPoint = collision.transform.position;
+            collision.gameObject.SetActive(false);
+        }
         if (collision.tag == "Asteroid")
         {
             audioSource.PlayOneShot(collisionClip);
@@ -132,7 +138,19 @@ public class PlayerMovement : MonoBehaviour
         if (collision.tag == "Crate") {
             audioSource.PlayOneShot(breakClip);
         }
+        if (collision.tag =="Life")
+        {
+            audioSource.PlayOneShot(lifeClip);
+        }
         
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if ((1 << collision.gameObject.layer) == groundLayer.value)
+        {
+            respawnPoint = collision.transform.position + Vector3.up;
+        }
     }
 
     private IEnumerator StopDashing()

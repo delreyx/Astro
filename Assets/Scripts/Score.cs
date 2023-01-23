@@ -7,15 +7,19 @@ using System;
 
 public class Score : MonoBehaviour
 {
-    public int score = 0;
+    public static int score = 0;
 
     public TextMeshProUGUI scoreText;
+
+    private Animator backgroundAnimation;
+    private float cycleOffset;
 
     // Start is called before the first frame update
     void Start()
     {
         score = 0;
         scoreText.text = "Score: " + score.ToString();
+        backgroundAnimation = GetComponent<Animator>();
     }
 
     void Update()
@@ -27,6 +31,8 @@ public class Score : MonoBehaviour
     {
         score++;
         scoreText.text = "Score: " + score.ToString();
+        backgroundAnimation.SetFloat("Transition", ((float)score)/400f);
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
