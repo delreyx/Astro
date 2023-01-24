@@ -608,7 +608,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.0481, y: 101}
+  m_AnchoredPosition: {x: 1.0481, y: 220}
   m_SizeDelta: {x: 600, y: 320}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1750315455
@@ -742,7 +742,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.0481, y: -183}
+  m_AnchoredPosition: {x: 1.0481, y: -78}
   m_SizeDelta: {x: 900, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1853623940
@@ -765,8 +765,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Control the astronaut to move left and right by using A and D.\n<br>\nUse
-    SPACE to dash into a direction.\n<br>\nUse W bar to jump. \n\n"
+  m_text: "Score as high as possible to reach the sun.\n<br>\nControl the astronaut's
+    movement by using A and D to move left and right.\n<br>\nUse SPACE to dash into
+    a direction.\n<br>\nUse W bar to jump. \n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 044ce8101295d42f0945645108a36349, type: 2}
   m_sharedMaterial: {fileID: -6688459350834658648, guid: 044ce8101295d42f0945645108a36349, type: 2}
