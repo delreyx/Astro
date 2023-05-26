@@ -36,6 +36,10 @@ public class LivesCounter : MonoBehaviour
         {
             TakeDamage(1);
         }
+        if (collision.tag == "Bullet")
+        {
+            TakeDamage(1);
+        }
         if (collision.tag == "KillBox")
         {
             TakeDamage(1);

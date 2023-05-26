@@ -12,6 +12,11 @@ TagManager:
   - Life
   - Platform
   - CheckPoint
+  - Waypoint
+  - TEST
+  - Bullet
+  - Enemy
+  - BulletB
   layers:
   - Default
   - TransparentFX
@@ -57,4 +62,7 @@ TagManager:
     locked: 0
   - name: enemies
     uniqueID: 518967315
+    locked: 0
+  - name: MiniBoss
+    uniqueID: 3188559623
     locked: 0

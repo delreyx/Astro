@@ -3,7 +3,9 @@ guid: 0e38156ecec8743359c8d0152f5237e6
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - BossLevel: {fileID: 2017153332805900556, guid: b42506983dd0245ab8b04ae37e416c30, type: 3}
+  - scoreText: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
