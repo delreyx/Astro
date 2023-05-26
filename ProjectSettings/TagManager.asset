@@ -17,6 +17,7 @@ TagManager:
   - Bullet
   - Enemy
   - BulletB
+  - Planeta
   layers:
   - Default
   - TransparentFX
@@ -28,7 +29,7 @@ TagManager:
   - Background
   - 
   - 
-  - 
+  - MAINBOSS
   - 
   - 
   - 
