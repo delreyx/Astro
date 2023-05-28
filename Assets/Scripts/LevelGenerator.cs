@@ -38,7 +38,6 @@ private const float PLAYER_DISTANCE_SPAWN_LEVEL_PART = 1f;
         TileMetrics levelPartTransform = Instantiate(levelPart, spawnPosition, Quaternion.identity);
         return levelPartTransform;
     }
-
-  
+    
 
 }

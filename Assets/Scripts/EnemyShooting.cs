@@ -10,18 +10,19 @@ public class EnemyShooting : MonoBehaviour
 
     // a list of all active enemies
     private static List<EnemyShooting> enemies = new List<EnemyShooting>();
-    
-    public GameObject bullet;
 
+    public GameObject bullet;
     public Transform bulletPos;
+    public AudioClip bulletSound;
 
     private float timer;
+    private AudioSource audioSource;
 
     public static EnemyShooting GetClosest(Vector3 point)
     {
         float distance = 1000f;
         EnemyShooting closestEnemy = null;
-        
+
         foreach (EnemyShooting enemyShooting in enemies)
         {
             float d = Vector3.Distance(enemyShooting.transform.position, point);
@@ -40,8 +41,11 @@ public class EnemyShooting : MonoBehaviour
     {
         if (player == null)
             player = GameObject.FindGameObjectWithTag("Player");
-        
+
         enemies.Add(this);
+
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = bulletSound;
     }
 
     private void OnDestroy()
@@ -52,25 +56,23 @@ public class EnemyShooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         float distance = Vector2.Distance(transform.position, player.transform.position);
-        
-        if (distance<10)
+
+        if (distance < 10)
         {
             timer += Time.deltaTime;
-            
+
             if (timer > 2)
             {
                 timer = 0;
                 shoot();
+                audioSource.PlayOneShot(bulletSound); // Play the bullet sound
             }
-
         }
+    }
 
-
-        void shoot()
-        {
-            Instantiate(bullet, bulletPos.position, Quaternion.identity);
-        }
-}
+    void shoot()
+    {
+        Instantiate(bullet, bulletPos.position, Quaternion.identity);
+    }
 }

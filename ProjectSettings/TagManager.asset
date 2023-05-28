@@ -18,6 +18,7 @@ TagManager:
   - Enemy
   - BulletB
   - Planeta
+  - Explosion
   layers:
   - Default
   - TransparentFX

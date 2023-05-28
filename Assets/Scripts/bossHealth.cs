@@ -1,23 +1,33 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class enemyHealth : MonoBehaviour
+public class bossHealth : MonoBehaviour
 {
-    public int maxHealth = 3;
+    public int maxHealth = 10;
     public int currentHealth;
-    public GameObject explosionPrefab;
-    public AudioClip explosionSound;
-    private AudioSource audioSource;
+    public GameObject explosionPrefab; // Reference to the explosion object
+    public AudioClip explosionSound; // Reference to the explosion sound
+
+    private AudioSource audioSource; // Reference to the AudioSource component
     private Animator anim;
 
     private void Start()
     {
         currentHealth = maxHealth;
-        audioSource = GetComponent<AudioSource>();
-        anim = GetComponent<Animator>();
 
+        // Create an AudioSource component if it doesn't exist
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
+
+        // Assign the explosion sound to the AudioSource component
+        audioSource.clip = explosionSound;
+
+        // Get the Animator component attached to the boss object
+        anim = GetComponent<Animator>();
     }
 
     public void TakeDamage(int amount)
@@ -27,10 +37,12 @@ public class enemyHealth : MonoBehaviour
         {
             anim.SetTrigger("takeDamage");
         }
+
         if (currentHealth <= 0)
         {
-            Destroy(gameObject);
+            currentHealth = 0; // Ensure health doesn't go below 0
             Explode();
+            Destroy(gameObject);
         }
     }
 
@@ -45,6 +57,5 @@ public class enemyHealth : MonoBehaviour
         {
             audioSource.PlayOneShot(explosionSound);
         }
-
     }
 }

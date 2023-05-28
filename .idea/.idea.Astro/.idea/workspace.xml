@@ -12,7 +12,9 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BulletBuddy.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BulletScript.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/EnemyShooting.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/spawnBoss.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.17.2/Editor/PlasticSCM/PlasticWindow.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/Downloads/Score.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -88,7 +90,8 @@
       <workItem from="1684486870496" duration="20350000" />
       <workItem from="1684919411510" duration="2494000" />
       <workItem from="1685022184451" duration="1984000" />
-      <workItem from="1685096487442" duration="18870000" />
+      <workItem from="1685096487442" duration="24055000" />
+      <workItem from="1685178458030" duration="18149000" />
     </task>
     <servers />
   </component>

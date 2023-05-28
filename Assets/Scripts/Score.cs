@@ -6,10 +6,15 @@ using TMPro;
 
 public class Score : MonoBehaviour
 {
+    // Redd: Use a constant so you only need to change this number once.
+    private const int bossSpawnRate = 5;
+    
     public static int score = 0;
     private static int lastScoreBoss = 0;
     public static int scoreBoss = 0;
-    public GameObject BossLevel;
+
+    // Redd: You can use a read only variable to trigger the boss.
+    public static bool nextTileIsBoss { get; private set; } = false;
 
     public TextMeshProUGUI scoreText;
 
@@ -23,43 +28,32 @@ public class Score : MonoBehaviour
         score = 0;
         lastScoreBoss = 0;
         scoreBoss = 0;
+        // Redd: default this to false.
+        nextTileIsBoss = false;
+        
         scoreText.text = "Score: " + score.ToString();
         backgroundAnimation = GetComponent<Animator>();
-
-        // Disable the BossLevel object at the start
-        BossLevel.SetActive(false);
     }
 
     public void IncrementScore()
     {
         lastScoreBoss = scoreBoss;
         score++;
-        scoreBoss = score / 50;
+        // Redd: Here
+        scoreBoss = score / bossSpawnRate;
+        
         scoreText.text = "Score: " + score.ToString();
         backgroundAnimation.SetFloat("Transition", ((float)score) / 400f);
-
-        if (score % 50 == 0 && scoreBoss > lastScoreBoss)
+        
+        // Redd: Small tweaks to this condition.
+        if (score % bossSpawnRate == 0 && scoreBoss > lastScoreBoss)
         {
-            for (int i = 0; i < scoreBoss; i++)
-            {
-                SpawnBoss();
-                
-            }
+            nextTileIsBoss = true;
         }
     }
 
-    private void SpawnBoss()
+    // Redd: This will reset the boolean.
+    public static void ResetBossSpawn()
     {
-        if (score > 0)
-        {
-            GameObject player = GameObject.FindGameObjectWithTag("Player");
-
-            if (player != null)
-            {
-                Vector3 spawnPosition = player.transform.position;
-                Instantiate(BossLevel, spawnPosition, Quaternion.identity);
-                
-            }
-        }
-    }
-}
+        nextTileIsBoss = false;
+    }}
